@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --accent: #f43f5e;
+      --accent-glow: rgba(244, 63, 94, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 5rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 3rem;
+      max-width: 650px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--accent);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--accent);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .btn-celebrate {
+      margin-top: 2rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-celebrate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(244, 63, 94, 0.6);
+    }
+
+    /* Memories Section */
+    .memories-container {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 4rem;
+    }
+
+    .memories-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .card-content {
+      padding: 1.2rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Letter Box */
+    .letter-box {
+      max-width: 650px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px dashed rgba(244, 63, 94, 0.4);
+      padding: 2.5rem;
+      border-radius: 20px;
+      margin-top: 4rem;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .letter-box h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="badge">Special Day</div>
+    <h1>Happy Birthday! 🎂</h1>
+    <p class="subtitle">Wishing you a year filled with happiness, success, and all the things you love most.</p>
+    <button class="btn-celebrate" onclick="triggerCelebration()">Celebrate 🎉</button>
+  </div>
+
+  <div class="memories-container">
+    <h2 class="memories-title">Favorite Memories</h2>
+    <div class="grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-img-placeholder">
+          <span>Add Photo 1 Here</span>
+        </div>
+        <div class="card-content">
+          <h3>Unforgettable Moments</h3>
+          <p>Replace this caption with a special inside joke, date, or trip.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-img-placeholder">
+          <span>Add Photo 2 Here</span>
+        </div>
+        <div class="card-content">
+          <h3>Little Adventures</h3>
+          <p>A place where you explored together or shared quiet moments.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-img-placeholder">
+          <span>Add Photo 3 Here</span>
+        </div>
+        <div class="card-content">
+          <h3>Milestones Ahead</h3>
+          <p>Looking forward to another incredible year celebrating you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-box">
+    <h2>A Note for You</h2>
+    <p>
+      Write your personalized message here. You can make it as heartfelt, long, or detailed as you want. Thank him for being who he is, mention your favorite traits, or outline what you have planned for his celebration today!
+    </p>
+    <br>
+    <p style="text-align: right; font-weight: 600; color: var(--accent);">With love ❤️</p>
+  </div>
+
+  <script>
+    function triggerCelebration() {
+      // Fire confetti bursts
+      const count = 200;
+      const defaults = { origin: { y: 0.7 } };
+
+      function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio)
+        }));
+      }
+
+      fire(0.25, { spread: 26, startVelocity: 55 });
+      fire(0.2, { spread: 60 });
+      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+      fire(0.1, { spread: 120, startVelocity: 45 });
+    }
+
+    // Auto-fire confetti once when the page loads
+    window.addEventListener('load', () => {
+      triggerCelebration();
+    });
+  </script>
+</body>
+</html>
